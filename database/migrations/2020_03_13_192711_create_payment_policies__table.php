@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVenuesTable extends Migration
+class CreatePaymentPoliciesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateVenuesTable extends Migration
      */
     public function up()
     {
-        Schema::create('venues', function (Blueprint $table) {
+        Schema::create('payment_policies_', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->text('description')->nullable();
-
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ class CreateVenuesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('venues');
+        Schema::dropIfExists('payment_policies_');
     }
 }
