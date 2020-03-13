@@ -33,6 +33,7 @@ jobs:
 
     deploy:
         needs: laravel-tests
+        runs-on: ubuntu-latest
 
         steps:
             - uses: actions/checkout@v2
@@ -44,3 +45,4 @@ jobs:
                   key: ${{ secrets.KEY }}
                   port: ${{ secrets.PORT }}
                   script: ${{ secrets.DEPLOY_SCRIPT_PATH }}
+                  debug: true
