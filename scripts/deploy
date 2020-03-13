@@ -1,0 +1,32 @@
+#!/bin/sh
+
+OLD_RELEASE=$(pwd -P | sed "s@$RELEASE_PATH/@@")
+
+# make directory
+NEW_RELEASE=$(date +%Y%m%d%H%M%S)
+mkdir $RELEASE_PATH/$NEW_RELEASE && cd $RELEASE_PATH/$NEW_RELEASE
+
+# pull repo into directory
+git --git-dir=/var/www/html/repo/ --work-tree=. pull origin master
+
+# copy environment
+cp /var/www/html/config/.env .env
+
+# run composer to update dependencies
+composer install --no-interaction --no-dev --prefer-dist
+
+# update database
+# --force  Required to run when in production.
+php artisan migrate --force
+
+# stop server on old
+cd $RELEASE_PATH/$OLD_RELEASE && php artisan down
+
+# repoint to new dir
+ln -sfn $RELEASE_PATH/$NEW_RELEASE current
+
+# start server on new
+cd $RELEASE_PATH/$NEW_RELEASE && php artisan up
+
+# cleanup old directories
+rm `ls -t $RELEASE_PATH | awk 'NR>2'`
