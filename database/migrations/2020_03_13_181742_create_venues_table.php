@@ -70,6 +70,7 @@ class CreateVenuesTable extends Migration
             $table->boolean('handicap_accessible')->nullable()->default(false);
             $table->boolean('has_elevator')->nullable()->default(false);
             $table->boolean('has_stairs')->nullable()->default(false);
+			$table->boolean('has_wifi')->nullable()->default(false);
 
             //Restrooms
             $table->boolean('private_restroom')->nullable()->default(false);
