@@ -15,7 +15,7 @@ class CreateVenueAssetsTable extends Migration
     {
         Schema::create('venue_assets', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('venue_id');
+            $table->unsignedInteger('venue_id');
             $table->string('url');
             $table->timestamps();
 

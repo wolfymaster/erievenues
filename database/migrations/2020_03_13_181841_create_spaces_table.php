@@ -16,7 +16,7 @@ class CreateSpacesTable extends Migration
         Schema::create('spaces', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('venue_id');
+            $table->unsignedInteger('venue_id');
             $table->double('base_fee'); //
             $table->double('hourly_rate');
             $table->integer('maximum_occupancy')->nullable(); //Maximum venue occupancy
