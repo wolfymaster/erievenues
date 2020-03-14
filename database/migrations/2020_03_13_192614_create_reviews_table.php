@@ -15,8 +15,8 @@ class CreateReviewsTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->increments('id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('venue_id')->references('id')->on('venues')->onDelete('cascade');
+            $table->foreign('user')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('venue')->references('id')->on('venues')->onDelete('cascade');
             $table->foreign('event')->references('id')->on('events')->onDelete('cascade');
             // All ratings 1-5
             $table->integer('overall_rating'); 
@@ -24,10 +24,6 @@ class CreateReviewsTable extends Migration
             $table->integer('ambiance_rating')->nullable();
             $table->integer('listing_accuracy_rating')->nullable();
             $table->integer('service_rating')->nullable();
-            
-            
-            
-            
             $table->timestamps();
         });
     }

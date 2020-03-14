@@ -15,6 +15,7 @@ class CreateThreeSixtyImagesTable extends Migration
     {
         Schema::create('three_sixty_images', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('url')->nullable();
             $table->timestamps();
         });
     }
