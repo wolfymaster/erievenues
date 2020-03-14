@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateThreeSixtyImagesTable extends Migration
+class CreateVenueTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateThreeSixtyImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('three_sixty_images', function (Blueprint $table) {
+        Schema::create('venue_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('url')->nullable();
+            $table->integer('venue_id');
+            $table->string('type');
             $table->timestamps();
+
+            $table->foreign('venue_id')->references('id')->on('venues')->onDelete('cascade');
         });
     }
 
@@ -27,6 +30,6 @@ class CreateThreeSixtyImagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('three_sixty_images');
+        Schema::dropIfExists('venue_types');
     }
 }

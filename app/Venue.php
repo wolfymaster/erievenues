@@ -49,12 +49,6 @@ class Venue extends Model
         return $this->hasManyThrough('App\User', App\Review);
     }
 
-    public function serviceOptions()
-    {  
-         //e.g. catering available, alcohol bar, servers available, projector, etc.
-        return $this->hasMany('App\ServiceOption');
-    }
-
     
     public function spaces() 
     {
@@ -66,6 +60,11 @@ class Venue extends Model
     {
         //Users associated with venue submission (e.g. venue owner, point of contact)
         return $this->hasMany('App\User');
+    }
+
+    public function assets()
+    {
+        return $this->hasMany('App\VenueAsset');
     }
 
     public function venueType()

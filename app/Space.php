@@ -8,25 +8,8 @@ class Space extends Model
 {
 
 
-
-    //360 degree camera image
-    public function threesixtyimage()
+    public function venue()
     {
-        return $this->hasOne('App\ThreeSixtyImage');
-    }
-
-    public function images()
-    {
-        return $this->hasMany('App\Image');
-    }
-
-    public function restroomTypes()
-    {
-        return $this->hasMany('App\RestroomType');
-    }
-
-    public function user()
-    {
-        return $this->belongsTo('App\Space');
+        return $this->belongsTo('App\Venue');
     }
 }
