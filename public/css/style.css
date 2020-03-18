@@ -435,6 +435,7 @@
 
 .testimonial-section {
     height: 1000px;
+    padding-bottom: 60px;
     background-color: #ED4730;
 }
 
@@ -464,6 +465,11 @@
     margin-top: 10px;
     margin-bottom: 10px;
     background-color: #b3d4fc;
+}
+
+.events-section {
+  height: 1000px;
+  padding-bottom: 60px;
 }
 
 .memories-section {
