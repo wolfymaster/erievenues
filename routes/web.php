@@ -11,6 +11,28 @@
 |
 */
 
+// homepage
 Route::get('/', function () {
     return view('home');
 });
+
+// venue show
+Route::get('/venue/{id}', 'VenuesController@show');
+
+// contact page
+Route::get('/contact', function () {
+	return view('contact');
+});
+
+// booking a venue
+Route::get('/booking', function () {
+	return view('venue');
+});
+
+// search venues
+Route::get('/search', function () {
+	return view('venue');
+});
+
+
+
