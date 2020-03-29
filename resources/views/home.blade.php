@@ -1,4 +1,9 @@
 @extends('layouts.default')
+
+@section('stylesheet')
+<link rel="stylesheet" href="{{ asset('css/home.css') }}">
+@stop
+
 @section('content')
 <section>
     <div class="hero-image">

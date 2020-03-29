@@ -1,0 +1,156 @@
+.close-text {
+    letter-spacing: -4px;
+    margin-right: 3px;
+    color: var(--primary);
+ }
+
+.events-section {
+height: 1000px;
+padding-bottom: 60px;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.hero-content a {
+    border: solid 1px #ED4730;
+    background-color: #ED4730;
+    width: 30%;
+    border-radius: 3px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    margin-top: 20px;
+    opacity: 1;
+    font-size: 20px;
+    color: white;
+ }
+
+.hero-content h1 {
+font-family: 'Playfair Display', serif;
+font-weight: 300;
+font-size: 42px;
+opacity: 1;
+}
+ 
+.hero-content p {
+font-family: 'Poppins', sans-serif;
+font-weight: 300;
+font-size: 18px;
+opacity: 1;
+margin-top: -10px;
+}
+
+.hero-content-background {
+    height: 250px;
+    width: 600px;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 2;
+}
+
+.hero-image {
+background-image: linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+    ), url("https://images.squarespace-cdn.com/content/v1/590b369ae58c6287a432f8fb/1570121895312-42FX6LAYG7K8PX60LJSW/ke17ZwdGBToddI8pDm48kEKMqguWKtJtdu7GRpevtycUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKcY_SKr6PHxI-NFLCFFhZRL-WMdpl-xMP0PX9ColnCcznOWQn75VErDdh0vv-EiKtt/ACS_0004.JPG?format=1500w");
+
+height: 600px;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+position: relative;
+
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.memories-section {
+background-color: #451997;
+height: 1050px;
+}
+
+.squiggle {
+width: 600px;
+}
+
+.testimonial {
+    height: 275px;
+    width: 475px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #b3d4fc;
+   }   
+
+.testimonial-banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}   
+
+.testimonial-banner h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 26px;
+}
+
+.testimonial-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}   
+
+.testimonial-section {
+    height: 1000px;
+    padding-bottom: 60px;
+    background-color: #ED4730;
+   }
+
+.title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 42px;
+    font-weight: 200;
+    margin-left: 20px;
+   }
+
+.transition-banner {
+height: 100px;
+background-color: #20273E;
+}   
+
+.venue-banner {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+
+.venue-banner h2 {
+color: #F5F3F1;
+}
+
+.venue-card {
+height: 225px;
+width: 420px;
+background-color: #FFFFFF;
+}
+
+.venue-highlight-grid {
+    background-color: #F5F3F1;
+    height: 600px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    align-items: center;
+    justify-items: center;
+}
+
