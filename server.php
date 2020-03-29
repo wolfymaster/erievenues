@@ -7,6 +7,10 @@
  * @author   Taylor Otwell <taylor@laravel.com>
  */
 
+// TODO: Wolfy - Remove this line or conditionally render it in dev env
+// https://github.com/bitnami/bitnami-docker-laravel/issues/84
+opcache_reset();
+
 $uri = urldecode(
     parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)
 );
