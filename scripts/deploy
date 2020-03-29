@@ -1,4 +1,5 @@
 #!/bin/sh
+if [ -z "$RELEASE_PATH" ] || exit(1)
 
 OLD_RELEASE=$(pwd -P | sed "s@$RELEASE_PATH/@@")
 
