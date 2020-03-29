@@ -1,0 +1,1 @@
+<p><span>&copy</span> 2020 Erie Venues. All rights reserved.</p>
