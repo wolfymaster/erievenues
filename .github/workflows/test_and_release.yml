@@ -35,16 +35,35 @@ jobs:
 
         steps:
             - uses: actions/checkout@v2
-            - name: Run deploy script on server
+            - name: Set deploy directory
+              run: DEPLOY_DIR=$(date +%Y%m%d%H%M%S) && echo "::set-env name=DEPLOY_DIR::$DEPLOY_DIR"
+            - name: Create deploy directory
+              run: echo $DEPLOY_DIR && mkdir -p $DEPLOY_DIR
+            - name: Move files to deploy directory
+              run: find . -mindepth 1 -maxdepth 1 ! -regex ".\/$DEPLOY_DIR$" -exec mv '{}' ./$DEPLOY_DIR/ \;
+            - name: Deploy to Production
+              uses: easingthemes/ssh-deploy@v2.0.7
+              env:
+                  SSH_PRIVATE_KEY: ${{ secrets.KEY }}
+                  ARGS: "-rltgoDzvO --exclude '.git' --exclude '.github'"
+                  SOURCE: $DEPLOY_DIR
+                  REMOTE_HOST: ${{ secrets.HOST }}
+                  REMOTE_USER: ${{ secrets.USERNAME }}
+                  TARGET: "/var/www/html/releases/"
+            - name: Go live
               uses: appleboy/ssh-action@master
               env:
-                  GIT_HASH=$(git rev-parse --short "$GITHUB_SHA")
-                  GIT_BRANCH=${GITHUB_REF##*/}
+                  DEPLOY_DIR: /var/www/html/releases/${{env.DEPLOY_DIR}}
               with:
                   host: ${{ secrets.HOST }}
                   username: ${{ secrets.USERNAME }}
                   key: ${{ secrets.KEY }}
                   port: ${{ secrets.PORT }}
-                  envs: GIT_HASH,GIT_BRANCH
-                  script: ${{ secrets.DEPLOY_SCRIPT_PATH }}
+                  envs: DEPLOY_DIR
+                  script: |
+                    cp /var/www/html/config/.env $DEPLOY_DIR/.env
+                    cd $DEPLOY_DIR && composer install --no-interaction --no-dev --prefer-dist
+                    cd $DEPLOY_DIR && php artisan migrate --force
+                    ln -sfn $DEPLOY_DIR /var/www/html/current
+                    cd $DEPLOY_DIR && rm `ls -t /var/www/html/releases/ | awk 'NR>2'`
                   debug: true
