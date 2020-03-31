@@ -1,5 +1,5 @@
 #!/bin/sh
-if [ -z "$RELEASE_PATH" ] || exit(1)
+[ ! -z "$RELEASE_PATH" ] || { echo "RELEASE_PATH not defined"; exit 1; }
 
 OLD_RELEASE=$(pwd -P | sed "s@$RELEASE_PATH/@@")
 
@@ -8,7 +8,8 @@ NEW_RELEASE=$(date +%Y%m%d%H%M%S)
 mkdir $RELEASE_PATH/$NEW_RELEASE && cd $RELEASE_PATH/$NEW_RELEASE
 
 # pull repo into directory
-git --git-dir=/var/www/html/repo/ --work-tree=. pull origin master
+git --git-dir=/var/www/html/repo fetch
+git --git-dir=/var/www/html/repo archive $GIT_HASH | tar -xf - -C $RELEASE_PATH/$NEW_RELEASE
 
 # copy environment
 cp /var/www/html/config/.env .env
@@ -24,7 +25,7 @@ php artisan migrate --force
 cd $RELEASE_PATH/$OLD_RELEASE && php artisan down
 
 # repoint to new dir
-ln -sfn $RELEASE_PATH/$NEW_RELEASE current
+ln -sfn $RELEASE_PATH/$NEW_RELEASE /var/www/html/current
 
 # start server on new
 cd $RELEASE_PATH/$NEW_RELEASE && php artisan up
