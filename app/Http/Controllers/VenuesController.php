@@ -41,8 +41,8 @@ class VenuesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Venue  $venue
-     * @return \Illuminate\Http\Response
+     * @param \App\Venue $venue
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show(Venue $venue, $id)
     {
@@ -83,5 +83,14 @@ class VenuesController extends Controller
     public function destroy(Venue $venue)
     {
         //
+    }
+
+    public function json(Request $request) {
+        $q = $request->query('q');
+        $id = $request->id;
+        return [
+            'query' => $q,
+            'venue' => Venue::find($id),
+        ];
     }
 }

@@ -18,7 +18,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // get venue availability
+Route::get('/venue/{id}/availability', 'VenuesController@json');
+
 
 // get venue details
-
-//
+Route::get('/venue/{id}', function($id) {
+    return \App\Venue::find($id);
+});
