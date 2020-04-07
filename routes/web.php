@@ -20,9 +20,7 @@ Route::get('/', function () {
 Route::get('/venue/{id}', 'VenuesController@show');
 
 // contact page
-Route::get('/contact', function () {
-	return view('contact');
-});
+Route::get('/contact', 'ContactController@create');
 
 // booking a venue
 Route::get('/booking', function () {
