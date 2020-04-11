@@ -8,7 +8,7 @@ $factory->define(App\Venue::class, function (Faker $faker) {
         'opening_time' => $faker->time(),
         'closing_time' => $faker->time(),
         'phone' => $faker->phoneNumber,
-        'address' => $faker->address,
+        'address' => $faker->streetAddress,
         'city' => $faker->city,
         'state' => $faker->state,
         'zip_code' => $faker->postcode,

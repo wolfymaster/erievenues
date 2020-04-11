@@ -72,7 +72,4 @@ class Venue extends Model
         //e.g. restauraunt, distillery, winery, brewery, office, coworking location, etc.
         return $this->hasOne('App\VenueType');
     }
-    
-
-
 }

@@ -86,8 +86,17 @@ class VenuesController extends Controller
     }
 
     public function json(Request $request) {
-        $q = $request->query('q');
+        $start = $request->query('start');
+        $end = $request->query('end');
+
         $id = $request->id;
+
+        // for the time range selected:
+        // find all availability time slots the venue has
+        // find all the bookings the venue has
+        // Return the ranges between bookings
+        // how can I better do this?
+
         return [
             'query' => $q,
             'venue' => Venue::find($id),
