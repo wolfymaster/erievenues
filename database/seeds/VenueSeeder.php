@@ -12,10 +12,6 @@ class VenueSeeder extends Seeder
     public function run()
     {
         // insert some venues
-        factory(App\Venue::class, 5)->create()->each(function ($venue) {
-            factory(App\VenueAvailability::class)->create([
-                "venue_id" => $venue
-            ]);
-        });
+        factory(App\Venue::class, 5)->create();
     }
 }

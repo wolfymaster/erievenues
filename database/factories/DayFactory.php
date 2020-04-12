@@ -3,7 +3,8 @@
 use Faker\Generator as Faker;
 
 $factory->define(App\Day::class, function (Faker $faker) {
-    $currentTime = strtotime("now");
+    $days = rand(0, 7);
+    $currentTime = strtotime("now + ".$days." days");
 
     return [
         'day' => date('d', $currentTime),
