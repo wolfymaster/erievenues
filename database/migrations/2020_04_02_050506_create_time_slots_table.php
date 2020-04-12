@@ -17,6 +17,7 @@ class CreateTimeSlotsTable extends Migration
             $table->increments('id');
             $table->time('start_time')->index();
             $table->time('end_time')->index();
+			$table->char('ampm',2);
             $table->timestamps();
         });
     }

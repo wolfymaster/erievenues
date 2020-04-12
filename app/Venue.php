@@ -72,4 +72,12 @@ class Venue extends Model
         //e.g. restauraunt, distillery, winery, brewery, office, coworking location, etc.
         return $this->hasOne('App\VenueType');
     }
+
+    public function availability() {
+    	return $this->hasMany('App\VenueAvailability');
+	}
+
+	public function bookings() {
+    	return $this->hasMany('App\Bookings');
+	}
 }

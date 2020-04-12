@@ -93,13 +93,17 @@ class VenuesController extends Controller
 
         // for the time range selected:
         // find all availability time slots the venue has
+
+		$venue = Venue::find($id);
+		$availability = $venue->availability()->isavailable()->get()->load('day', 'time');
+		$venue->availability = $availability;
         // find all the bookings the venue has
+
+
+
         // Return the ranges between bookings
         // how can I better do this?
 
-        return [
-            'query' => $q,
-            'venue' => Venue::find($id),
-        ];
+        return $venue;
     }
 }
