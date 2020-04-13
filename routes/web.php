@@ -15,26 +15,12 @@
 Route::get('/', function () {
 	
     return view('home', [
-		'venues' => [ 
-			[
-				'name' => 'Awesome Place',
-				'description' => 'This is a cool place'
-			],
-			[
-				'name' => 'Bob\'s Place',
-				'description' => ''
-			],
-			[
-				'name' => 'Bob\'s Place',
-				'description' => ''
-			],
-			[
-				'name' => 'Bob\'s Place',
-				'description' => ''
-			]
-		]
+		'venues' => App\Venue::all()->take(4)
 	]);
 });
+
+// venue search
+Route::get('/venues', 'VenuesController@search');
 
 // venue show
 Route::get('/venue/{id}', 'VenuesController@show');

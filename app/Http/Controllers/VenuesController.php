@@ -106,4 +106,10 @@ class VenuesController extends Controller
 
         return $venue;
     }
+
+    public function search() {
+        return view('venueSearch', [
+            'venues' => Venue::all()->take(10)
+        ]);
+    }
 }

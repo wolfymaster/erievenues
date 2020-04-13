@@ -11,7 +11,7 @@
             <div class="hero-content-background">
                 <h1 class="is-size-4-mobile">Find the Perfect Venue</h1>
                 <p class="is-size-6-mobile has-text-centered">Search, select, and schedule. <br>It's that simple.</p>
-                <a href="" class="button is-large" id="hero-button">Browse Venues</a>
+                <a href="venues" class="button is-large" id="hero-button">Browse Venues</a>
             </div>
         </div>
     </div>
