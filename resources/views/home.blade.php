@@ -17,6 +17,9 @@
     </div>
 </section>
 
+<div id="app">
+  <router-view></router-view>
+</div>
 
 <!-- Venue Cards -->
 <section id="venuesContainer">
