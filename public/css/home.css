@@ -1,8 +1,3 @@
-.events-section {
-height: 1000px;
-padding-bottom: 60px;
-}
-
 .hero-content {
     display: flex;
     flex-direction: column;
@@ -10,42 +5,30 @@ padding-bottom: 60px;
     justify-content: space-evenly;
 }
 
-.hero-content a {
-    border: solid 1px #ED4730;
-    background-color: #ED4730;
-    width: 30%;
-    border-radius: 3px;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #FFFFFF;
-    margin-top: 5px;
-    opacity: 1;
-    font-size: 20px;
-    color: white;
- }
-
 .hero-content h1 {
 font-family: 'Playfair Display', serif;
 font-weight: 300;
-font-size: 42px;
+font-size: 2.4rem;
 opacity: 1;
 }
  
 .hero-content p {
 font-family: 'Poppins', sans-serif;
 font-weight: 300;
-font-size: 18px;
+font-size: 1.1rem;
 opacity: 1;
 margin-top: -10px;
 }
 
 .hero-content-background {
-    height: 250px;
-    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 235px;
     background-color: rgba(255, 255, 255, 0.8);
+    padding-left: 16px;
+    padding-right: 16px;
     z-index: 2;
 }
 
@@ -65,86 +48,3 @@ display: flex;
 align-items: center;
 justify-content: center;
 }
-
-.memories-section {
-background-color: #451997;
-height: 1050px;
-}
-
-.squiggle {
-width: 600px;
-}
-
-.testimonial {
-    height: 275px;
-    width: 475px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    background-color: #b3d4fc;
-   }   
-
-.testimonial-banner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
-}   
-
-.testimonial-banner h2 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 26px;
-}
-
-.testimonial-grid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-}   
-
-.testimonial-section {
-    height: 1000px;
-    padding-bottom: 60px;
-    background-color: #ED4730;
-   }
-
-.title {
-    font-family: 'Poppins', sans-serif;
-    font-size: 42px;
-    font-weight: 200;
-    margin-left: 20px;
-   }
-
-.transition-banner {
-height: 100px;
-background-color: #20273E;
-}   
-
-.venue-banner {
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-}
-
-.venue-banner h2 {
-color: #F5F3F1;
-}
-
-.venue-card {
-height: 225px;
-width: 420px;
-background-color: #FFFFFF;
-}
-
-.venue-highlight-grid {
-    background-color: #F5F3F1;
-    height: 600px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
-    align-items: center;
-    justify-items: center;
-}
-

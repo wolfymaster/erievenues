@@ -7,53 +7,52 @@
 @section('content')
 <section>
     <div class="hero-image">
-        <div class="hero-content-background">
-            <div class="hero-content">
-                <h1>Find the Perfect Venue</h1>
-                <p>Search, select, and schedule. It's that simple.</p>
-                <a href="">Browse Venues</a>
+        <div class="hero-content">
+            <div class="hero-content-background">
+                <h1 class="is-size-4-mobile">Find the Perfect Venue</h1>
+                <p class="is-size-6-mobile has-text-centered">Search, select, and schedule. <br>It's that simple.</p>
+                <a href="" class="button is-large" id="hero-button">Browse Venues</a>
             </div>
         </div>
     </div>
 </section>
 
-<section>
-    <div class="venue-highlight">
-        <div class="venue-banner">
-            <h2>Venues</h2>
-        </div>
-        <div class="venue-highlight-grid">
-            <div class="venue-card"></div>
-            <div class="venue-card"></div>
-            <div class="venue-card"></div>
-            <div class="venue-card"></div>
-            <div class="venue-card"></div>
-            <div class="venue-card"></div>
-        </div>
+
+<!-- Venue Cards -->
+<section id="venuesContainer">
+  <div class="container">
+    <div class="has-text-centered">
+        <h2 class="title">Venues</h2>
     </div>
+
+    <div class="container">
+      <div class="columns" style="margin:0;">
+          @foreach ($venues as $venue)
+            <div class="column">@include('components.venuecard')</div>
+          @endforeach
+      </div>
+    </div>
+
+  </div>
 </section>
 
-<section class="testimonial-section">
-    <div class="testimonial-banner">
-        <h2>People are talking</h2>
-        <p>What they're saying...</p>
+
+<section class="section">
+<div class="container has-text-centered">
+    <h2 class="title is-4">People are Talking</h2>
+    <p>What they're saying...</p>
+</div>
+
+<div class="tile is-ancestor">
+    <div class="tile">
+    
     </div>
-    <div class="testimonial-grid">
-        <div class="testimonial"></div>
-        <div class="testimonial"></div>
-        <div class="testimonial"></div>
+    <div class="tile">
+
     </div>
+
+</div>
+
 </section>
 
-<section class="events-section">
-    <div class="testimonial-banner">
-        <h2>Events</h2>
-        <p>What's Going On...</p>
-    </div>
-    <div class="testimonial-grid">
-        <div class="testimonial"></div>
-        <div class="testimonial"></div>
-        <div class="testimonial"></div>
-    </div>
-</section>
 @stop

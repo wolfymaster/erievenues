@@ -13,7 +13,27 @@
 
 // homepage
 Route::get('/', function () {
-    return view('home');
+	
+    return view('home', [
+		'venues' => [ 
+			[
+				'name' => 'Awesome Place',
+				'description' => 'This is a cool place'
+			],
+			[
+				'name' => 'Bob\'s Place',
+				'description' => ''
+			],
+			[
+				'name' => 'Bob\'s Place',
+				'description' => ''
+			],
+			[
+				'name' => 'Bob\'s Place',
+				'description' => ''
+			]
+		]
+	]);
 });
 
 // venue show

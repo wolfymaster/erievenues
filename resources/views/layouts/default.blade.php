@@ -12,12 +12,10 @@
         </header>
         <main>
             @yield('content')
-            <footer class="footer">
-                @include('includes.footer')
-            </footer>
+            @include('includes.footer')
         </main>
 
-        <script src="script.js"></script>
+        <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>
 

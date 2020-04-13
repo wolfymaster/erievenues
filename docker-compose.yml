@@ -22,5 +22,5 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ${MOUNT_DIR}:/app
+      - ./:/app
     privileged: true # Privileged mode could be required to run this container under Windows
