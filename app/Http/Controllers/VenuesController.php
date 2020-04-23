@@ -47,7 +47,8 @@ class VenuesController extends Controller
     public function show(Venue $venue, $id)
     {
 		return view('venue', [
-			"id" => $id
+			"id" => $id,
+			"venue" => $venue::find($id),
 		]);
     }
 
