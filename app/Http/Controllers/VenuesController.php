@@ -41,8 +41,8 @@ class VenuesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Venue  $venue
-     * @return \Illuminate\Http\Response
+     * @param \App\Venue $venue
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show(Venue $venue, $id)
     {
@@ -83,5 +83,27 @@ class VenuesController extends Controller
     public function destroy(Venue $venue)
     {
         //
+    }
+
+    public function json(Request $request) {
+        $start = $request->query('start');
+        $end = $request->query('end');
+
+        $id = $request->id;
+
+        // for the time range selected:
+        // find all availability time slots the venue has
+
+		$venue = Venue::find($id);
+		$availability = $venue->availability()->isavailable()->get()->load('day', 'time');
+		$venue->availability = $availability;
+        // find all the bookings the venue has
+
+
+
+        // Return the ranges between bookings
+        // how can I better do this?
+
+        return $venue;
     }
 }
