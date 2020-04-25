@@ -52,5 +52,8 @@ Route::get('/search', function () {
 	return view('venue');
 });
 
+Route::get('/login', function() {
+	return view('login');
+});
 
 

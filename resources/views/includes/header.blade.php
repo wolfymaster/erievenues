@@ -1,6 +1,10 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-  <div class="brand-text">ERI<span class="close-text">EV</span>ENUES</div>
+  <div class="brand-text">
+    <a href="/" style="color:inherit;">
+      ERI<span class="close-text">EV</span>ENUES
+    </a>
+  </div>
 
     <a role="button" class="navbar-burger burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
       <span aria-hidden="true"></span>
@@ -11,7 +15,7 @@
 
   <div id="navMenu" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item">
+      <a href="/" class="navbar-item">
         Home
       </a>
 
@@ -25,7 +29,7 @@
         </a>
 
         <div class="navbar-dropdown">
-          <a class="navbar-item">
+          <a href="/venues" class="navbar-item">
             Browse Venues
           </a>
           <a class="navbar-item">
@@ -48,7 +52,7 @@
           <a class="button" id="sign-up-button">
             <strong>Sign up</strong>
           </a>
-          <a class="button has-text-black" id="login-button">
+          <a href="/login" class="button has-text-black" id="login-button">
             Log In
           </a>
         </div>
