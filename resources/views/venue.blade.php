@@ -26,6 +26,29 @@
             <div class="description columns">
 
                 <div class="description-wrapper column is-two-thirds">
+                    <div>
+                        <form action="" id="availability-checker">
+                            <div class="control">
+                                <label>StartDate</label>
+                                <input class="input" type="date" name="startdate" />
+                            </div>
+
+                            <div class="control">
+                                <label for="EndDate">EndDate</label>
+                                <input type="date" class="input" name="enddate" />
+                            </div>
+
+                            <div class="control">
+                                <button class="button is-link is-light">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div>
+                        Availability: ?
+                    </div>
+                    <div>
+                        <a href="">Reserve Venue</a>
+                    </div>
                     <h3 class="description-title">About the space</h3>
                     <h4 class="description-title">Description</h4>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. At, tenetur necessitatibus laborum, ipsum incidunt impedit laudantium distinctio unde, error cumque explicabo quod officiis officia reiciendis cum rem recusandae aliquam quos.</p>
@@ -107,5 +130,25 @@
 
 
     </section>
+
+    <script>
+        let checker = document.querySelector('#availability-checker');
+        checker.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            let form = e.target;
+            let startDate = form.querySelector('[name="startdate"]');
+            let endDate = form.querySelector('[name="enddate"]');
+
+            // make availability request
+            fetch('/api/venue/1/availability')
+                .then(res => res.json())
+                .then(res => {
+                    let availability = res.availability;
+                    console.log(availability)
+                })
+
+        })
+    </script>
 
 @stop

@@ -96,8 +96,9 @@ class VenuesController extends Controller
         // find all availability time slots the venue has
 
 		$venue = Venue::find($id);
-		$availability = $venue->availability()->isavailable()->get()->load('day', 'time');
+		$availability = $venue->availability()->isavailable()->withinRange('2020-04-22 8:00:00','2020-04-25 23:00:00')->get()->load('day', 'time');
 		$venue->availability = $availability;
+
         // find all the bookings the venue has
 
 
