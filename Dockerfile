@@ -1,3 +1,5 @@
 FROM bitnami/laravel:6
-COPY . /app
 
+WORKDIR /app
+
+COPY --chown=bitnami:bitnami . /app

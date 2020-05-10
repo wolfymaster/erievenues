@@ -37,7 +37,7 @@ jobs:
           PRIORITY: 1
 
       - name: Create service
-        run: aws ecs create-service --region us-west-2 --service-name $SERVICE_NAME --task-definition $TASK_NAME --desired-count 1 --launch-type "FARGATE" --network-configuration "awsvpcConfiguration={subnets=[subnet-07df5b3f9095fb69c,subnet-0dbbdc415d816f2a9],securityGroups=[sg-075b8dec07f1f2cce],assignPublicIp="ENABLED"}" --cluster $CLUSTER_NAME --load-balancers "targetGroupArn=$TARGET_GROUP_ARN,containerName=$CONTAINER_NAME,containerPort=$CONTAINER_PORT"
+        run: aws ecs create-service --region us-west-2 --service-name $SERVICE_NAME --task-definition $TASK_NAME --desired-count 1 --launch-type "FARGATE" --network-configuration "awsvpcConfiguration={subnets=[subnet-07df5b3f9095fb69c,subnet-0dbbdc415d816f2a9],securityGroups=[sg-075b8dec07f1f2cce],assignPublicIp="ENABLED"}" --cluster $CLUSTER_NAME --load-balancers "targetGroupArn=$TARGET_GROUP_ARN,containerName=$CONTAINER_NAME,containerPort=$CONTAINER_PORT" --health-check-grace-period-seconds 300
         env:
           CLUSTER_NAME: wolfy_clients_cluster
           SERVICE_NAME: ${{ steps.branch-name.outputs.branch }}
