@@ -1,0 +1,99 @@
+{
+  "family": "ErieVenues",
+  "networkMode": "awsvpc",
+  "containerDefinitions": [
+    {
+      "name": "ErieVenuesApp",
+      "image": "367850933615.dkr.ecr.us-west-2.amazonaws.com/erievenues:latest",
+      "portMappings": [
+        {
+          "hostPort": 3000,
+          "protocol": "tcp",
+          "containerPort": 3000
+        }
+      ],
+      "essential": true,
+      "entryPoint": [],
+      "command": [],
+      "environment": [
+        {
+          "name": "DB_DATABASE",
+          "value": "my_database"
+        },
+        {
+          "name": "DB_HOST",
+          "value": "127.0.0.1"
+        },
+        {
+          "name": "DB_PASSWORD",
+          "value": "my_password"
+        },
+        {
+          "name": "DB_USERNAME",
+          "value": "my_user"
+        }
+      ],
+      "dependsOn": [
+        {
+          "containerName": "MariaDB",
+          "condition": "START"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "secretOptions": [],
+        "options": {
+          "awslogs-group": "/ecs/erievenuesapp",
+          "awslogs-region": "us-west-2",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    },
+    {
+      "name": "MariaDB",
+      "image": "bitnami/mariadb:10.1",
+      "entryPoint": [],
+      "command": [],
+      "portMappings": [
+        {
+          "hostPort": 3306,
+          "protocol": "tcp",
+          "containerPort": 3306
+        }
+      ],
+      "environment": [
+        {
+          "name": "ALLOW_EMPTY_PASSWORD",
+          "value": "yes"
+        },
+        {
+          "name": "MARIADB_DATABASE",
+          "value": "my_database"
+        },
+        {
+          "name": "MARIADB_PASSWORD",
+          "value": "my_password"
+        },
+        {
+          "name": "MARIADB_USER",
+          "value": "my_user"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "secretOptions": [],
+        "options": {
+          "awslogs-group": "/ecs/mariadb",
+          "awslogs-region": "us-west-2",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ],
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "cpu": "256",
+  "memory": "512",
+  "executionRoleArn": "arn:aws:iam::367850933615:role/ecsTaskExecutionRole"
+}

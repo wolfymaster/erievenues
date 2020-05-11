@@ -1,0 +1,46 @@
+name: Create ECS Service
+
+on: create
+
+jobs:
+  create:
+    name: Create service
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: echo ::set-output name=branch::${GITHUB_REF##*/}
+        id: branch-name
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-west-2
+
+      - name: Create task definition
+        run: aws ecs register-task-definition --region us-west-2 --cli-input-json file://task-definition.json
+
+      - name: Create target group
+        run: echo ::set-env name=TARGET_GROUP_ARN::$(aws elbv2 create-target-group --name $GROUP_NAME --protocol HTTP --port 80 --vpc-id $VPC_ID --target-type ip | jq ".TargetGroups[0].TargetGroupArn")
+        env:
+          GROUP_NAME: ${{ steps.branch-name.outputs.branch }}
+          VPC_ID: vpc-29856651
+
+      - name: Create ALB Listener Rule
+        run: aws elbv2 create-rule --listener-arn $ALB_LISTENER_ARN --conditions "Field=host-header,HostHeaderConfig={Values=$HOST}" --actions Type=forward,TargetGroupArn=$TARGET_GROUP_ARN --priority $PRIORITY
+        env:
+          ALB_LISTENER_ARN: 'arn:aws:elasticloadbalancing:us-west-2:367850933615:listener/app/wolfy-clients-alb/87830c8b98bd5ed5/dfbb37890515456c'
+          HOST: ${{ steps.branch-name.outputs.branch }}.eriedev.com
+          PRIORITY: 1
+
+      - name: Create service
+        run: aws ecs create-service --region us-west-2 --service-name $SERVICE_NAME --task-definition $TASK_NAME --desired-count 1 --launch-type "FARGATE" --network-configuration "awsvpcConfiguration={subnets=[subnet-07df5b3f9095fb69c,subnet-0dbbdc415d816f2a9],securityGroups=[sg-075b8dec07f1f2cce],assignPublicIp="ENABLED"}" --cluster $CLUSTER_NAME --load-balancers "targetGroupArn=$TARGET_GROUP_ARN,containerName=$CONTAINER_NAME,containerPort=$CONTAINER_PORT" --health-check-grace-period-seconds 300
+        env:
+          CLUSTER_NAME: wolfy_clients_cluster
+          SERVICE_NAME: ${{ steps.branch-name.outputs.branch }}
+          TASK_NAME: ErieVenues
+          CONTAINER_NAME: ErieVenuesApp
+          CONTAINER_PORT: 3000
