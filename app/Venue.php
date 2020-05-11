@@ -79,5 +79,6 @@ class Venue extends Model
 
 	public function bookings() {
     	return $this->hasMany('App\Bookings');
-	}
+    }
+    
 }

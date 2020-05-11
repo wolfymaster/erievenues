@@ -46,7 +46,9 @@ class SpacesController extends Controller
      */
     public function show(Space $space)
     {
-        //
+        $venue = App/Venue::findOrFail($space->venue_id);
+
+        return view('space', ['space' => $space, 'venue' => $venue]);
     }
 
     /**

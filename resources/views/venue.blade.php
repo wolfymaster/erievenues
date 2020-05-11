@@ -51,22 +51,22 @@
                     </div>
                     <h3 class="description-title">About the space</h3>
                     <h4 class="description-title">Description</h4>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. At, tenetur necessitatibus laborum, ipsum incidunt impedit laudantium distinctio unde, error cumque explicabo quod officiis officia reiciendis cum rem recusandae aliquam quos.</p>
+                    <p>{{ venue->description }}</p>
 
-                    <h5 class="description-title">Capacity</h5>
+                    <!-- <h5 class="description-title">Capacity</h5>
                     <ul class="capacity">
-                        <li>Total: 82</li>
+                        <li>Total: </li>
                         <li>Seated: 60</li>
                         <li>Standing: 12</li>
-                    </ul>
+                    </ul> -->
 
                     <h6 class="description-title">Considerations</h6>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor neque doloribus distinctio cum quisquam! Repellendus dolore debitis, eveniet delectus repellat reprehenderit ducimus, ullam ab ipsa possimus, fugit quisquam tempore eligendi? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor neque doloribus distinctio cum quisquam! Repellendus dolore debitis, eveniet delectus repellat reprehenderit ducimus, ullam ab ipsa possimus, fugit quisquam tempore eligendi?</p>
+                    <p> {{$venue->considerations}} </p>
 
                     <div class="address">
                         <h3 class="address-title">Location</h3>
                         <iframe src="" frameborder="0"></iframe>
-                        <p>55 West Bay Drive Erie, PA 16507</p>
+                        <p>{{$venue->address}} {{$venue->city}}, {{$venue->state}} {{$venue->zip_code}}</p>
                     </div>
                     <div class="tour">
                         <iframe src="" frameborder="0"></iframe>
@@ -75,54 +75,79 @@
 
 
                 <div class="attribute-list column">
-                    <p class="attribute-title">Payment Policy</p>
+                        <p class="attribute-title">Payment Policy</p>
                     <ul>
-                        <li>express booking</li>
-                        <li class="strike">deposit required</li>
-                        <li>accepts credit cards</li>
-                        <li>accepts checks</li>
+                        <li class = "ven-{{ venue->express_booking }}">express booking</li>
+                        <li class = "ven-{{ venue->deposit_required }}">deposit required</li>
+                        <li class = "ven-{{ venue->accepts_credit_card }}">accepts credit cards</li>
+                        <li class = "ven-{{ venue->accepts_check }}">accepts checks</li>
                     </ul>
-                    <p class="attribute-title">Amenities</p>
+                    <!-- <p class="attribute-title">Amenities</p>
                     <ul>
-                        <li>projector</li>
-                        <li>projector screen</li>
-                        <li class="strike">television</li>
-                        <li class="strike">HDMI cable</li>
-                        <li class="strike">HDMI port</li>
-                    </ul>
-                    <p class="attribute-title">Parking</p>
+                        <li class = "ven-{{ venue-> }}">projector</li>
+                        <li class = "ven-{{ venue-> }}">projector screen</li>
+                        <li class = "ven-{{ venue-> }}">television</li>
+                        <li class = "ven-{{ venue-> }}">HDMI cable</li>
+                        <li class = "ven-{{ venue-> }}">HDMI port</li>
+                    </ul> -->
+
+                        <p class="attribute-title">Considerations</p>
                     <ul>
-                        <li>free parking lot</li>
-                        <li>paid parking lot</li>
-                        <li class="strike">free parking garage</li>
-                        <li class="strike">paid parking garage</li>
-                        <li class="strike">free street parking</li>
-                        <li>paid street parking</li>
-                        <li class="strike">valet parking</li>
+                        <li class="venue-{{venue->children_not_allowed}}">children not allowed</li>
+                        <li class="venue-{{venue->under_18_not_allowed}}">under 18 not allowed</li>
+                        <li class="venue-{{venue->under_21_not_allowed}}">under 21 not allowed</li>
+                        <li class="venue-{{venue->dog_friendly}}">dog friendly</li>
+                        <li class="venue-{{venue->smoking}}">smoking</li>
+                        <li class="venue-{{venue->outside_smoking}}">outside smoking</li>
+                        <li class="venue-{{venue->handicap_accessible}}">handicap accessible</li>
+                        <li class="venue-{{venue->has_elevator}}">has elevator</li>
+                        <li class="venue-{{venue->has_stairs}}">has stairs</li>
+                        <li class="venue-{{has_wifi}}">has wifi</li>
                     </ul>
-                    <p class="attribute-title">Food and Drink</p>
+
+                         <p class="attribute-title">Parking</p>
                     <ul>
-                        <li>private bar</li>
-                        <li>public bar</li>
-                        <li class="strike">allows catering</li>
-                        <li class="strike">venue caters</li>
-                        <li class="strike">bring your own beer</li>
-                        <li>food for purchase</li>
+                        <li class = "ven-{{ venue->free_lot }}">free parking lot</li>
+                        <li class = "ven-{{ venue->paid_lot }}">paid parking lot</li>
+                        <li class = "ven-{{ venue->free_parking_garage }}">free parking garage</li>
+                        <li class = "ven-{{ venue->paid_parking_garage }}">paid parking garage</li>
+                        <li class = "ven-{{ venue->free_street_parking }}">free street parking</li>
+                        <li class = "ven-{{ venue->paid_street_parking }}">paid street parking</li>
+                        <li class = "ven-{{ venue->valet_parking }}">valet parking</li>
                     </ul>
-                    <p class="attribute-title">Seating</p>
+                        <p class="attribute-title">Food and Drink</p>
                     <ul>
-                        <li>regular seating</li>
-                        55                   <li class="strike">high-top seating</li>
-                        <li class="strike">booth seating</li>
+                        <li class = "ven-{{ venue->private_bar }}">private bar</li>
+                        <li class = "ven-{{ venue->public_bar }}">public bar</li>
+                        <li class = "ven-{{ venue->catering_allowed }}">allows catering</li>
+                        <li class = "ven-{{ venue->venue_caters }}">venue caters</li>
+                        <li class = "ven-{{ venue->allows_byob }}">bring your own beer</li>
+                        <!-- <li class = "ven-{{ venue-> }}">food for purchase</li> -->
                     </ul>
-                    <p class="attribute-title">Restrooms</p>
+                        <p class="attribute-title">Seating</p>
                     <ul>
-                        <li>private restroom</li>
-                        <li>public restroom</li>
-                        <li>gender-neutral</li>
-                        <li class="strike">handicap accessible</li>
-                        <li class="strike">portable restrooms</li>
+                        <li class = "ven-{{ venue-> }}">regular seating</li>
+                        <li class = "ven-{{ venue-> }}">high-top seating</li>
+                        <li class = "ven-{{ venue-> }}">booth seating</li>
                     </ul>
+                        <p class="attribute-title">Restrooms</p>
+                    <ul>
+                        <li class = "ven-{{ venue->private_restroom }}">private restroom</li>
+                        <li class = "ven-{{ venue->public_restroom }}">public restroom</li>
+                        <li class = "ven-{{ venue->gender_neutral_restrooms }}">gender-neutral</li>
+                        <li class = "ven-{{ venue->handicap_accessible_restrooms }}">handicap accessible</li>
+                        <li class = "ven-{{ venue->portable_restrooms }}">portable restrooms</li>
+                    </ul>
+
+                        <p class="attribute-title">Ownership</p>
+                    <ul>
+                        <li class="venue-{{venue->locally_owned}}">locally owned</li>
+                        <li class="venue-{{venue->woman_owned}}">woman owned/li>
+                        <li class="venue-{{venue->veteran_owned}}">veteran owned</li>
+                        <li class="venue-{{venue->franchise_owned}}">franchise owned</li>
+                        <li class="venue-{{venue->small_business}}">small business</li>
+                    </ul>
+
                 </div> <!-- End Column -->
             </div> <!-- End Columns -->
 

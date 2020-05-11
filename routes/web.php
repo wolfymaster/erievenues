@@ -37,7 +37,7 @@ Route::get('/', function () {
 });
 
 // venue show
-Route::get('/venue/{id}', 'VenuesController@show');
+Route::get('/venue/{venue}', 'VenuesController@show');
 
 // contact page
 Route::get('/contact', 'ContactController@create');

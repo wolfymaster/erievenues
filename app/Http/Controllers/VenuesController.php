@@ -44,12 +44,11 @@ class VenuesController extends Controller
      * @param \App\Venue $venue
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show(Venue $venue, $id)
+    public function show(Venue $venue)
     {
-		return view('venue', [
-			"id" => $id,
-			"venue" => $venue::find($id),
-		]);
+        $spaces = $venue->spaces();
+        
+		return view('venue', ['venue' => $venue, 'spaces' => $spaces]);
     }
 
     /**
