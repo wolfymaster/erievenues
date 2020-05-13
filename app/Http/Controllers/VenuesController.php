@@ -46,7 +46,7 @@ class VenuesController extends Controller
      */
     public function show(Venue $venue)
     {
-        $spaces = $venue->spaces();
+        $spaces = $venue->spaces;
         
 		return view('venue', ['venue' => $venue, 'spaces' => $spaces]);
     }

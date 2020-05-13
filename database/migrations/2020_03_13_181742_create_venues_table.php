@@ -41,7 +41,7 @@ class CreateVenuesTable extends Migration
             $table->boolean('allows_byob')->nullable()->default(false);
             $table->boolean('catering_allowed')->nullable()->default(false);
             $table->boolean('venue_caters')->nullable()->default(false);
-            //TODO add food for purchase  
+            $table->boolean('food_for_purchase')->nullable()->default(false);
 
             //Ownership Types
             $table->boolean('locally_owned')->nullable()->default(false);

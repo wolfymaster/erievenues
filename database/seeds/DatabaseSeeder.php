@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
         $this->call(DaySeeder::class);
         $this->call(TimeSlotSeeder::class);
         $this->call(VenueSeeder::class);
+        $this->call(SpaceSeeder::class);
         $this->call(VenueAvailabilitySeeder::class);
+        
     }
 }
