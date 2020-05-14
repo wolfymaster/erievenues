@@ -38,7 +38,7 @@ Route::get('/', function () {
 
 
 // space show
-Route::get('/venue/{venue}/space/{space}', 'SpacesController@show');
+Route::get('/space/{id}', 'SpacesController@show');
 
 // venue show
 Route::get('/venue/{venue}', 'VenuesController@show');

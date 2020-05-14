@@ -5,50 +5,63 @@
             <img src="sheraton.png" alt="">
         </div>
     </section>
+
     <section class="venue">
+    <div class="container is-fluid" style="padding:50px; background:#ED4730; margin-bottom:20px;">
+        <div class="container">
         <div class="venue-titles">
+        <a href="/venue/{{ $venue->id }}">
             <h1 class="venue-title">
                 {{ $venue->name }}
             </h1>
+        </a>
             <h2 class="space-title">
                 {{ $space->name }}
             </h2>
         </div>
-        <div class="description">
-            <div class="description-wrapper">
-                <h3 class="description-title">About the Space</h3>
-                <h4 class="description-title">Description</h4>
-                <p>{{ $space->description }}</p>
+        </div>
+    </div>
 
-                <h5 class="description-title">Capacity</h5>
-                <ul class="capacity">
-                    <li>Total: {{ $space->maximum_occupancy }}</li>
-                    <li>Seated: {{ $space->seating_quantity }}</li>
-                    <li>Standing: {{ $space->standing_quantity }}</li>
-                </ul>
+    <div class="container">
+        <div class="description columns">
+            <div class="description-wrapper column is-two-thirds">
+                <div class="description">
+                    <div class="description-wrapper">
+                        <h3 class="description-title">About the Space</h3>
+                        <h4 class="description-title">Description</h4>
+                        <p>{{ $space->description }}</p>
 
-                <h5 class="description-title">Pricing</h5>
-                <ul class="capacity">
-                    <li>Base Fee: {{ $space->base_fee }}</li>
-                    <li>Hourly Rate: {{ $space->hourly_rate}}</li>
-                </ul>
+                        <h5 class="description-title">Capacity</h5>
+                        <ul class="capacity">
+                            <li>Total: {{ $space->maximum_occupancy }}</li>
+                            <li>Seated: {{ $space->seating_quantity }}</li>
+                            <li>Standing: {{ $space->standing_quantity }}</li>
+                        </ul>
 
-                <h6 class="description-title">Considerations</h6>
-                <p>{{ $space->considerations }}</p>
+                        <h5 class="description-title">Pricing</h5>
+                        <ul class="capacity">
+                            <li>Base Fee: ${{ $space->base_fee }}</li>
+                            <li>Hourly Rate: ${{ $space->hourly_rate}}</li>
+                        </ul>
 
-                <div class="address">
-                    <h3 class="address-title">Location</h3>
-                    <iframe src="" frameborder="0"></iframe>
-                    <p>{{ $venue->address }}  {{ $venue->city }}, {{ $venue->state }} {{ $venue->zip_code }}</p>
+                        <h6 class="description-title">Considerations</h6>
+                        <p>{{ $space->considerations }}</p>
+
+                        <div class="address">
+                            <h3 class="address-title">Location</h3>
+                            <iframe src="" frameborder="0"></iframe>
+                            <p>{{ $venue->address }}  {{ $venue->city }}, {{ $venue->state }} {{ $venue->zip_code }}</p>
+                        </div>
+                        <div class="tour">
+                            <iframe src="" frameborder="0"></iframe>
+                        </div>
+                    </div>
                 </div>
-                <div class="tour">
-                    <iframe src="" frameborder="0"></iframe>
-                </div>
-            </div>
+             </div>   
 
 
 
-            <div class="attribute-list">
+            <div class="attribute-list column">
                 <p class="attribute-title">Payment Policy</p>
                 <ul>
                     <li class="ven-{{$venue->express_booking}}">express booking</li>
@@ -125,9 +138,8 @@
                     <li class="ven-{{$venue->franchise_owned}}">franchise owned</li>
                     <li class="ven-{{$venue->small_business}}">small business</li>
                 </ul>
-
-            </div>
         </div>
+    </div>
     </section>
 
 @stop

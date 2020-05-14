@@ -11,7 +11,7 @@
         <div class="container is-fluid" style="padding:50px; background:#ED4730; margin-bottom:20px;">
             <div class="container">
                 <div class="venue-titles" style="color:#FFF;">
-                    <h1 class="venue-title" style="font-weight:bold; font-size:3.0rem;">
+                    <h1 class="venue-title title" style="font-weight:bold; font-size:3.0rem;">
                         {{ $venue->name  }}
                     </h1>
                     <h2 class="space-title">
@@ -52,7 +52,7 @@
                     <h3 class="description-title">About the space</h3>
                     <ul>
                     @foreach($spaces as $space)
-                        <li>{{ $space->name }}</li>
+                       <a href="/space/{{ $space->id }}"><li>{{ $space->name }}</li></a> 
                     @endforeach
                     </ul>
                     <h4 class="description-title">Description</h4>
