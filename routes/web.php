@@ -36,8 +36,13 @@ Route::get('/', function () {
 	]);
 });
 
+
+// space show
+Route::get('/space/{id}', 'SpacesController@show');
+
 // venue show
-Route::get('/venue/{id}', 'VenuesController@show');
+Route::get('/venue/{venue}', 'VenuesController@show');
+
 
 // contact page
 Route::get('/contact', 'ContactController@create');

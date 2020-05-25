@@ -12,9 +12,12 @@ class VenueAvailabilitySeeder extends Seeder
     public function run()
     {
         App\Venue::all()->each( function($venue) {
+
             factory(App\VenueAvailability::class, 10)->create([
                 'venue_id' => $venue->id
-            ]);
+              ]);
+              
         });
+
     }
 }

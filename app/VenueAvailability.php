@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class VenueAvailability extends Model
 {
@@ -28,5 +29,16 @@ class VenueAvailability extends Model
 
 	public function scopeIsAvailable($query) {
     	return $query->whereIsUnavailable(false);
+	}
+
+	public function scopeWithinRange($query, $startTimestamp, $endTimestamp) {
+    	// where day and time is within provided range
+    	return $query->whereHas('day', function (Builder $query) use($startTimestamp, $endTimestamp) {
+			$query->where('day', '>=', date('d', strtotime($startTimestamp)) )
+				-> where('day', '<=', date('d', strtotime($endTimestamp)) );
+		})->whereHas('time', function (Builder $query) use($startTimestamp, $endTimestamp) {
+			$query->where('start_time', '>=', date('h:i', strtotime($startTimestamp)) )
+				-> where('end_time', '<=', date('h:i', strtotime($endTimestamp)) );
+		});
 	}
 }

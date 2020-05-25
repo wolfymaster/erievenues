@@ -44,9 +44,12 @@ class SpacesController extends Controller
      * @param  \App\Space  $space
      * @return \Illuminate\Http\Response
      */
-    public function show(Space $space)
+    public function show($id)
     {
-        //
+        $space = Space::findOrFail($id);
+        $venue = $space->venue;
+
+        return view('space', ['space' => $space, 'venue' => $venue]);
     }
 
     /**
