@@ -11,6 +11,11 @@
 |
 */
 
+// authentication routes
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 // homepage
 Route::get('/', function () {
 	
@@ -51,9 +56,3 @@ Route::get('/booking', function () {
 Route::get('/search', function () {
 	return view('venue');
 });
-
-Route::get('/login', function() {
-	return view('login');
-});
-
-
