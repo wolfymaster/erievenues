@@ -14,32 +14,9 @@
 // authentication routes
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 // homepage
-Route::get('/', function () {
-	
-    return view('home', [
-		'venues' => [ 
-			[
-				'name' => 'Awesome Place',
-				'description' => 'This is a cool place'
-			],
-			[
-				'name' => 'Bob\'s Place',
-				'description' => ''
-			],
-			[
-				'name' => 'Bob\'s Place',
-				'description' => ''
-			],
-			[
-				'name' => 'Bob\'s Place',
-				'description' => ''
-			]
-		]
-	]);
-});
+Route::get('/', 'HomeController@index')->name('home');
+
 
 // venue show
 Route::get('/venue/{id}', 'VenuesController@show');
